@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -21,3 +22,4 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // ROUTE MODEL BINDING {Al usar entre llaves un modelo y se modifica el metodo post index}
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/post/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');

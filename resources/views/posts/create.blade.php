@@ -4,10 +4,17 @@
     Creating new publication
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('content')
     <div class="md:flex md:items-center md:flex-row ">
         <div class="md:w-1/2 px-10">
-            image here
+            <form action="{{ route('images.store') }}" id="my-dropzone" method="POST" enctype="multipart/form-data"
+                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
         </div>
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
             <form action="{{ route('register') }}" method="POST" novalidate>
@@ -28,8 +35,8 @@
                         Description
                     </label>
                     <textarea id="description" placeholder="Description for you publication"
-                        class="border p-3 w-full rounded-lg @error('title') border-red-500 @enderror">{{ old('title') }}</textarea>
-                    @error('title')
+                        class="border p-3 w-full rounded-lg @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+                    @error('description')
                         <p class="bg-red-500 text-white my-2 rounded-md p-2">{{ $message }}</p>
                     @enderror
                 </div>

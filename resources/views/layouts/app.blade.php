@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>DevStagram - @yield('title')</title>
+    {{-- Cargar hojas de styles dependiendo de la pagina (si lo manda) --}}
+    @stack('styles')
     @vite('resources/css/app.css')
-    <script href="{{ asset('js/app.js') }}" defer></script>
+    @vite('resources/js/app.js')
 </head>
 
 <body class="bg-gray-100">
