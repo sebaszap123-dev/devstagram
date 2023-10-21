@@ -19,7 +19,7 @@ class LoginController extends Controller
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('message', 'Credenciales incorrectas');
         }
-
-        return redirect()->route('posts.index');
+        // Mandar el username para ser usao en la uri al iniciar sesion
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
